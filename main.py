@@ -24,7 +24,7 @@ def evaluarTarjetaCredito(edad: int, ingresos: float):
     if resultado["califica"]:
         return {
         "status": "APROBADO",
-        "mensaje": f"Felicidades, usted accede a {resultado["categoria"]}",
+        "mensaje": f"Felicidades, usted accede a {resultado['categoria']}",
         "data": resultado
          }
     else:
