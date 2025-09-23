@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "97198b87-7f6a-4f4d-8e92-ec64d4eb2d40",
+		"name": "TarjetaOH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47940086",
+		"_collection_link": "https://henry-s-team-11.postman.co/workspace/Team-Workspace~8701391b-d6fb-409a-8957-e79d7b40921d/collection/47940086-97198b87-7f6a-4f4d-8e92-ec64d4eb2d40?action=share&source=collection_link&creator=47940086"
+	},
+	"item": [
+		{
+			"name": "Rechazado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El status de la request debe ser 200\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							" \r",
+							"pm.test(\"Debe ser RECHAZADO\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json.status).to.eql(\"RECHAZADO\")\r",
+							"    pm.expect(json.data.categoria).to.eql(null)\r",
+							"    pm.expect(json.data.linea).to.eql(0)\r",
+							"})\r",
+							" \r",
+							" "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/evaluaciones/tarjetas?edad=17&ingresos=2000",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"evaluaciones",
+						"tarjetas"
+					],
+					"query": [
+						{
+							"key": "edad",
+							"value": "17"
+						},
+						{
+							"key": "ingresos",
+							"value": "2000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tarjeta OH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El status de la request debe ser 200\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							" \r",
+							"pm.test(\"Debe ser aprobado con Tarjeta OH\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json.status).to.eql(\"APROBADO\")\r",
+							"    pm.expect(json.data.categoria).to.eql(\"Tarjeta OH\")\r",
+							"    pm.expect(json.data.linea).to.eql(2000)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/evaluaciones/tarjetas?edad=21&ingresos=1800",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"evaluaciones",
+						"tarjetas"
+					],
+					"query": [
+						{
+							"key": "edad",
+							"value": "21"
+						},
+						{
+							"key": "ingresos",
+							"value": "1800"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tarjeta OH Premium",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El status de la request debe ser 200\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							" \r",
+							"pm.test(\"Debe ser aprobado con Tarjeta OH\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json.status).to.eql(\"APROBADO\")\r",
+							"    pm.expect(json.data.categoria).to.eql(\"Tarjeta OH Premium\")\r",
+							"    pm.expect(json.data.linea).to.eql(10000)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/evaluaciones/tarjetas?edad=35&ingresos=6700",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"evaluaciones",
+						"tarjetas"
+					],
+					"query": [
+						{
+							"key": "edad",
+							"value": "35"
+						},
+						{
+							"key": "ingresos",
+							"value": "6700"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

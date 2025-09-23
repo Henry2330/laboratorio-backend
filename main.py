@@ -1,3 +1,5 @@
+import random
+from time import time
 from fastapi import FastAPI, HTTPException
 from scoring import evaluar_tc_cliente
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,8 +20,10 @@ app.add_middleware(
 def evaluarTarjetaCredito(edad: int, ingresos: float):
     if edad < 0 or ingresos < 0:
         raise HTTPException(status_code=400, detail="Datos inválidos")
-    
+
     resultado = evaluar_tc_cliente(edad, ingresos)
+
+    # time.sleep(0.2)  # Simula un retardo de 200 ms (milisegundos)
     
     if resultado["califica"]:
         return {
@@ -33,3 +37,9 @@ def evaluarTarjetaCredito(edad: int, ingresos: float):
           "mensaje": "No cumple con los requisitos para obtener nuestras tarjetas",
           "data": resultado
        }
+    
+@app.post("/clientes")
+def crearUsuario():
+    return {
+          "id": random.randint(1, 10)
+        }
